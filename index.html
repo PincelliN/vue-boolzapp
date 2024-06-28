@@ -17,43 +17,51 @@
     <div id="app">
       <div id="container">
         <div id="contact">
-          <div class="contact-logo">
-            <div class="user-logo">
-              <div class="logo"><img src="img/batman.jpg" alt="" /></div>
-              <strong>Batman</strong>
-            </div>
-            <div>
-              <ul>
-                <li>
-                  <a href="#"></a><i class="fa-solid fa-circle-notch"></i>
-                </li>
-                <li><a href="#"></a><i class="fa-solid fa-message"></i></li>
-                <li>
-                  <a href="#"></a><i class="fa-solid fa-ellipsis-vertical"></i>
-                </li>
-              </ul>
-            </div>
+          <!-- sezione  Utente -->
+            <div class="contact-header">
+                <div class="logo-header">
+                    <div class="logo-header-img"><img src="img/batman.jpg" alt="" /></div>
+                    <div class="logo-header-text"><strong>Batman</strong></div>   
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                        <a href="#"></a><i class="fa-solid fa-circle-notch"></i>
+                        </li>
+                        <li><a href="#"></a><i class="fa-solid fa-message"></i></li>
+                        <li>
+                        <a href="#"></a><i class="fa-solid fa-ellipsis-vertical"></i>
+                        </li>
+                    </ul>
+                </div>
           </div>
-          <div class="contact-logo advisor">
-            <div
-              v-show="notifiche==false"
-              @click="notifiche=true"
-              class="advisor-logo"
-            >
-              <i class="fa-solid fa-bell"></i>
-            </div>
-            <div
-              v-show="notifiche==true"
-              @click="notifiche=false"
-              class="advisor-logo"
-            >
-              <i class="fa-solid fa-bell-slash"></i>
-            </div>
-            <div>
-              <p>Ricevi Notifiche di nuovi messaggi</p>
-              <a href="#">Attica notifiche desktop</a>
-            </div>
+
+
+        <!-- Sezione notifiche  -->
+          <div class="contact-notification">
+                <div
+                v-show="notifiche==false"
+                @click="notifiche=true"
+                class="notification-bell"
+                ><i class="fa-solid fa-bell"></i>
+              
+                </div>
+                <div
+                v-show="notifiche==true"
+                @click="notifiche=false"
+                class="notification-bell"
+                >
+                <i class="fa-solid fa-bell-slash"></i>
+                </div>
+                <div>
+                <p>Ricevi Notifiche di nuovi messaggi</p>
+                <a href="#" v-show="notifiche==true">Attiva notifiche desktop</a>
+                <a href="#" v-show="notifiche==false" >Disattiva notifiche desktop</a>
+                </div>
           </div>
+
+
+          <!-- section filter chat -->
           <div class="contact-input">
             <button @click="FilterShow=[]">
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -65,65 +73,73 @@
               v-model="FilterSelect"
             />
           </div>
+
+        <!--  section chat group -->
           <div class="contact-scroll">
-            <div
-              v-for="(contact,i) in contacts"
-              class="contact-logo"
-              v-show="!FilterShow.includes(contact.name)"
-              @click="index=i"
-            >
-              <div class="img-name">
-                <div class="logo">
-                  <img :src="contact.avatar" :alt="contact.name" />
+                <div
+                v-for="(contact,i) in contacts"
+                class="contact-group"
+                v-show="!FilterShow.includes(contact.name)"
+                @click="index=i"
+                >
+                    <div class="contact-group-user">
+                            <div class="contact-group-user-img">
+                            <img :src="contact.avatar" :alt="contact.name" />
+                            </div>
+                            <div class="contact-group-user-text" >
+                            <strong>{{contact.name}}</strong>
+                            <p class="contact-group-text" >{{contact.messages[contact.messages.length-1].message}}</p>
+                            </div>
+                              Data
+                    </div>
                 </div>
-                <div>
-                  <strong>{{contact.name}}</strong>
+          </div>
+
+        </div>
+        <div id="chat">
+          
+            <div class="chat-header">
+              <div class="logo-header">
+                <div class="logo">
+                  <img
+                  class="logo-header-img"
+                    :src="contacts[index].avatar"
+                    :alt="contacts[index].name"
+                  />
+                </div>
+                <div >
+                  <strong>{{contacts[0].name}}</strong>
                   <p>ultimo messaggio</p>
                 </div>
               </div>
-              data
+              <div>
+                <ul>
+                  <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                  <li><i class="fa-solid fa-paperclip"></i></li>
+                  <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </div>
-        <div id="chat">
-                <div> 
-                    <div  class="contact-logo" >
-                        <div class="img-name">
-                             <div class="logo">
-                                 <img :src="contacts[index].avatar" :alt="contacts[index].name" />
-                            </div>
-                        <div class="contact-scroll">
-                             <strong>{{contacts[0].name}}</strong>
-                             <p>ultimo messaggio</p>
-                        </div>
-                    </div>
-                    <div>
-                        <ul>
-                            <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                            <li><i class="fa-solid fa-paperclip"></i></li>
-                            <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                        </ul>
-                    </div>
-          
-                </div>
-                <div>
-                    <div v-for="messag in contacts[index].messages " :class="(messag.status === 'received') ? 'left':'right'">
-                        {{messag.message}}     <i class="fa-solid fa-chevron-down"></i>
-                        
-                    </div>
-                </div>
-                <div>
-                    <button> <i class="fa-regular fa-face-smile"></i></button>
-                    <input type="text" v-model="newmessage" @keypress.enter="AddMessage()">
-                    <button><i class="fa-solid fa-microphone"></i></button>
-                </div>
-
-
+            <div class="contact-scroll chat-table">
+              <div
+                v-for="messag in contacts[index].messages "
+                :class="(messag.status === 'received') ? 'left':'right'"
+              >
+                {{messag.message}} <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <div>
+              <button><i class="fa-regular fa-face-smile"></i></button>
+              <input
+                type="text"
+                v-model="newmessage"
+                @keypress.enter="AddMessage()"
+              />
+              <button><i class="fa-solid fa-microphone"></i></button>
+            </div>
+         
         </div>
       </div>
-
-      </div>
-
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

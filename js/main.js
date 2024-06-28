@@ -175,33 +175,37 @@ createApp({
   },
   methods: {
     IncludsFilter() {
-        this.FilterShow=[];
+      this.FilterShow = [];
       for (let index = 0; index < this.contacts.length; index++) {
         console.log(this.contacts);
         const element = this.contacts[index].name;
         console.log(element);
-        const ElementSplit = element.split(""); 
+        const ElementSplit = element.split("");
         console.log(ElementSplit);
         if (!ElementSplit.includes(this.FilterSelect)) {
           this.FilterShow.push(element);
           console.log(this.FilterShow);
         }
       }
-      this.FilterSelect="";
-      console.log("guarda questo"+this.FilterShow);
+      this.FilterSelect = "";
+      console.log("guarda questo" + this.FilterShow);
     },
 
-    AddMessage(){
-        let newmes = {
-          date: "10/01/2020 15:30:55",
-          message: this.newmessage,
-          status: "send",
-        };
-        console.log(newmes);
-        let Zone= this.contacts[this.index].messages.push(newmes);
-        console.log(Zone); 
-        this.newmessage = "";
-    }
-
+    AddMessage() {
+        
+        
+      let newmes = {
+        date: "10/01/2020 15:30:55",
+        message: this.newmessage,
+        status: "send",
+      };
+      console.log(newmes);
+      let Zone = this.contacts[this.index].messages.push(newmes);
+      console.log(Zone);
+      this.newmessage = "";
+    },
+    RemoveItem(index) {
+      this.ToDoList.splice(index, 1);
+    },
   },
 }).mount("#app");

@@ -3,12 +3,14 @@
     margin: 0;
     box-sizing: border-box;
 }
+/*  app general  */
 #app{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
+/* container general */
 #container{
     width: 80%;
     height: 90vh;
@@ -16,6 +18,7 @@
     flex-wrap: nowrap;
     border: 1px solid red;
 }
+/*  contact general */
 #contact{
     display: flex;
     flex-direction: column;
@@ -24,21 +27,109 @@
     height: 100%;
     border: 1px solid green;
 }
+/* contact child  */
+.contact-header{
+    display: flex;
+    align-items: center;
+}
+.logo-header{
+    display: flex;
+    align-items: center;
+}
+.logo-header-text{
+    flex-grow: 1;
+}
+.logo-header-img{
+    width: 30%;
+}
+ul{
+    list-style: none;
+    display: flex;
+}
+li{
+    margin: 5px;
+
+}
+/* contact notification */
+.contact-notification{
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 5px;
+padding: 5px;
+background-color: aqua;
+}
+.notification-bell{
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 3px;
+    aspect-ratio: 1/1;
+    background-color: aquamarine;
+}
+.contact-input{
+    padding: 3px;
+    text-align: center;
+}
+.contact-input>*{
+    height: 30px;
+    
+}
+input{
+    width: 90%;
+}
+/* contact filter */
+.contact-scroll{
+    overflow-y: scroll;
+}
+.contact-group{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.contact-group-user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.contact-group-text{
+    overflow: hidden;
+white-space: nowrap;
+    text-overflow: ellipsis;
+   
+}
+.contact-group-user-img{
+     width: 30%;
+    border-radius: 50px;
+}
+.contact-group-user-text{
+    width: 60%;
+}
+/* chat general */
 #chat{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 70%;
     height: 100%;
     border: 1px solid blue;
 }
-.contact-logo{
+/* chat general */
+.chat-contact-header{
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+.chat-header{
     display: flex;  
-    padding: 5px; 
-    width: 100%;
-     align-items: self-start; 
+     align-items: center; 
      justify-content: left;
-   
+     height: 50px;
+
      
+}
+.chat-table{
+    flex-grow:1;
 }
 .user-logo{
     display: flex;  
@@ -49,42 +140,14 @@
 .contact-scroll{
     overflow-y: scroll;
 }
-.logo{
-    width: 40%;
-    border-radius: 50px;
-}
-ul{
-    list-style: none;
-    display: flex;
-}
-li{
-    margin: 3px;
 
-}
+
 img{
     width:100%;
     border-radius: 100%;
     object-fit: cover;
 }
-.advisor{
-    background-color: aqua;
-    height: 100px;
-}
-.advisor-logo{
-    border: 1px solid black;
-    border-radius: 50%;
-    padding: 3px;
-    background-color: aquamarine;
-}
-.contact-input{
-    padding: 3px;
-}
-.contact-input>*{
-    height: 30px;
-}
-input{
-    width: 90%;
-}
+
 .img-name{
     display:flex;   
 }
