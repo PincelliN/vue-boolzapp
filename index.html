@@ -67,9 +67,10 @@
           </div>
           <div class="contact-scroll">
             <div
-              v-for="contact in contacts"
+              v-for="(contact,i) in contacts"
               class="contact-logo"
               v-show="!FilterShow.includes(contact.name)"
+              @click="index=i"
             >
               <div class="img-name">
                 <div class="logo">
@@ -89,7 +90,7 @@
                     <div  class="contact-logo" >
                         <div class="img-name">
                              <div class="logo">
-                                 <img :src="contacts[0].avatar" :alt="contacts[0].name" />
+                                 <img :src="contacts[index].avatar" :alt="contacts[index].name" />
                             </div>
                         <div>
                              <strong>{{contacts[0].name}}</strong>
@@ -106,7 +107,7 @@
           
                 </div>
                 <div>
-                    <div v-for="messag in contacts[0].messages " :class="(messag.status === 'received') ? 'left':'right'">
+                    <div v-for="messag in contacts[index].messages " :class="(messag.status === 'received') ? 'left':'right'">
                         {{messag.message}}
                         
                     </div>

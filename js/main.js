@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
       notifiche: false,
+      index:0,
       FilterSelect: "",
       FilterShow: [],
       contacts: [
