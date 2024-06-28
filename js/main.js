@@ -3,6 +3,9 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      notifiche: false,
+      FilterSelect: "",
+      FilterShow: [],
       contacts: [
         {
           name: "Michele",
@@ -167,5 +170,23 @@ createApp({
         },
       ],
     };
-  }
+  },
+  methods: {
+    IncludsFilter() {
+        this.FilterShow=[];
+      for (let index = 0; index < this.contacts.length; index++) {
+        console.log(this.contacts);
+        const element = this.contacts[index].name;
+        console.log(element);
+        const ElementSplit = element.split(""); 
+        console.log(ElementSplit);
+        if (!ElementSplit.includes(this.FilterSelect)) {
+          this.FilterShow.push(element);
+          console.log(this.FilterShow);
+        }
+      }
+      this.FilterSelect="";
+      console.log("guarda questo"+this.FilterShow);
+    },
+  },
 }).mount("#app");

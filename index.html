@@ -14,62 +14,57 @@
     <title>Boolzapp</title>
   </head>
   <body>
-
     <div id="app">
-
-        <div id="container">
-            <div id="contact">
-                <div class="contact-logo">
-                    <div class="user-logo">
-                     <div><img src="img/batman.jpg" alt=""></div>
-                     <span>Batman</span>
-                    </div>
-                    <div>
-                        <ul>
-                            <li><a href="#"></a><i class="fa-solid fa-circle-notch"></i></li>
-                            <li><a href="#"></a><i class="fa-solid fa-message"></i></li>
-                            <li><a href="#"></a><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                        </ul>
-                    </div>  
-                </div>
-                <div>
-                    <div><i class="fa-solid fa-bell"></i></div>
-                    <div><i class="fa-solid fa-bell-slash"></i></div>
-                    <div>
-                        <p>Ricevi Notifiche di nuovi messaggi</p>
-                        <a href="#">Attica notifiche desktop</a>
-                    </div>
-                </div>
-                <div>
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" placeholder="cerca una chat">
-                </div>
-                <div class="contact-scroll">
-                <div v-for="contact in contacts"  class="contact-logo">
-                     <div><img :src="contact.avatar" :alt="contact.name"></div>
-                     <span>{{contact.name}}</span>
-                    </div>
-                </div>
+      <div id="container">
+        <div id="contact">
+          <div class="contact-logo ">
+            <div class="user-logo">
+              <div class="logo"><img src="img/batman.jpg" alt="" /></div>
+              <strong>Batman</strong>
             </div>
-            <div id="chat"></div>
-
+            <div>
+              <ul>
+                <li>
+                  <a href="#"></a><i class="fa-solid fa-circle-notch"></i>
+                </li>
+                <li><a href="#"></a><i class="fa-solid fa-message"></i></li>
+                <li>
+                  <a href="#"></a><i class="fa-solid fa-ellipsis-vertical"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="contact-logo advisor">
+            <div v-show="notifiche==false" @click="notifiche=true" class="advisor-logo"><i class="fa-solid fa-bell"></i></div>
+            <div v-show="notifiche==true" @click="notifiche=false" class="advisor-logo"><i class="fa-solid fa-bell-slash"></i></div>
+            <div>
+              <p>Ricevi Notifiche di nuovi messaggi</p>
+              <a href="#">Attica notifiche desktop</a>
+            </div>
+          </div>
+          <div class="contact-input">
+            <button @click="FilterShow=[]"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" placeholder="cerca una chat" @keypress.enter="IncludsFilter ()" v-model="FilterSelect"/>
+          </div>
+          <div class="contact-scroll">
+            <div v-for="contact in contacts" class="contact-logo" v-show="!FilterShow.includes(contact.name)">
+              <div class="logo">
+                <img :src="contact.avatar" :alt="contact.name" />
+              </div>
+              <strong>{{contact.name}}</strong>
+            </div>
+          </div>
         </div>
+        <div id="chat"></div>
+      </div>
 
-
-
-
-
-
-<i class="fa-solid fa-bell"></i>
-<i class="fa-solid fa-bell-slash"></i>
-<i class="fa-regular fa-face-smile"></i>
-<i class="fa-solid fa-magnifying-glass"></i>
-<i class="fa-solid fa-microphone"></i>
-<i class="fa-solid fa-paperclip"></i>
-<i class="fa-solid fa-chevron-down"></i>
-
-
-
+      <i class="fa-solid fa-bell"></i>
+      <i class="fa-solid fa-bell-slash"></i>
+      <i class="fa-regular fa-face-smile"></i>
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-microphone"></i>
+      <i class="fa-solid fa-paperclip"></i>
+      <i class="fa-solid fa-chevron-down"></i>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

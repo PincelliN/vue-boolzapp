@@ -36,6 +36,9 @@
     padding: 5px; 
     width: 100%;
      align-items: center; 
+     justify-content: left;
+   
+     
 }
 .user-logo{
     display: flex;  
@@ -45,6 +48,10 @@
 
 .contact-scroll{
     overflow-y: scroll;
+}
+.logo{
+    width: 40%;
+    border-radius: 50px;
 }
 ul{
     list-style: none;
@@ -58,7 +65,25 @@ img{
     width:100%;
     border-radius: 100%;
     object-fit: cover;
-    
 }
+.advisor{
+    background-color: aqua;
+    height: 100px;
+}
+.advisor-logo{
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 3px;
+    background-color: aquamarine;
+}
+.contact-input{
+    padding: 3px;
+}
+.contact-input>*{
+    height: 30px;
+}
+input{
+    width: 90%;
 
+}
 
