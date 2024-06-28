@@ -15,7 +15,62 @@
   </head>
   <body>
 
-    <div id="app"></div>
+    <div id="app">
+
+        <div id="container">
+            <div id="contact">
+                <div class="contact-logo">
+                    <div class="user-logo">
+                     <div><img src="img/batman.jpg" alt=""></div>
+                     <span>Batman</span>
+                    </div>
+                    <div>
+                        <ul>
+                            <li><a href="#"></a><i class="fa-solid fa-circle-notch"></i></li>
+                            <li><a href="#"></a><i class="fa-solid fa-message"></i></li>
+                            <li><a href="#"></a><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                        </ul>
+                    </div>  
+                </div>
+                <div>
+                    <div><i class="fa-solid fa-bell"></i></div>
+                    <div><i class="fa-solid fa-bell-slash"></i></div>
+                    <div>
+                        <p>Ricevi Notifiche di nuovi messaggi</p>
+                        <a href="#">Attica notifiche desktop</a>
+                    </div>
+                </div>
+                <div>
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" placeholder="cerca una chat">
+                </div>
+                <div class="contact-scroll">
+                <div v-for="contact in contacts"  class="contact-logo">
+                     <div><img :src="contact.avatar" :alt="contact.name"></div>
+                     <span>{{contact.name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div id="chat"></div>
+
+        </div>
+
+
+
+
+
+
+<i class="fa-solid fa-bell"></i>
+<i class="fa-solid fa-bell-slash"></i>
+<i class="fa-regular fa-face-smile"></i>
+<i class="fa-solid fa-magnifying-glass"></i>
+<i class="fa-solid fa-microphone"></i>
+<i class="fa-solid fa-paperclip"></i>
+<i class="fa-solid fa-chevron-down"></i>
+
+
+
+    </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </body>

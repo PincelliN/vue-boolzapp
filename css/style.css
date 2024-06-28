@@ -3,3 +3,62 @@
     margin: 0;
     box-sizing: border-box;
 }
+#app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#container{
+    width: 80%;
+    height: 90vh;
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px solid red;
+}
+#contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 30%;
+    height: 100%;
+    border: 1px solid green;
+}
+#chat{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    border: 1px solid blue;
+}
+.contact-logo{
+    display: flex;  
+    padding: 5px; 
+    width: 100%;
+     align-items: center; 
+}
+.user-logo{
+    display: flex;  
+    justify-content: flex-start;
+    align-items: center; 
+}
+
+.contact-scroll{
+    overflow-y: scroll;
+}
+ul{
+    list-style: none;
+    display: flex;
+}
+li{
+    margin: 3px;
+
+}
+img{
+    width:100%;
+    border-radius: 100%;
+    object-fit: cover;
+    
+}
+
+
