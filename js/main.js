@@ -4,7 +4,8 @@ createApp({
   data() {
     return {
       notifiche: false,
-      index:0,
+      index: 0,
+      newmessage: "",
       FilterSelect: "",
       FilterShow: [],
       contacts: [
@@ -189,5 +190,18 @@ createApp({
       this.FilterSelect="";
       console.log("guarda questo"+this.FilterShow);
     },
+
+    AddMessage(){
+        let newmes = {
+          date: "10/01/2020 15:30:55",
+          message: this.newmessage,
+          status: "send",
+        };
+        console.log(newmes);
+        let Zone= this.contacts[this.index].messages.push(newmes);
+        console.log(Zone); 
+        this.newmessage = "";
+    }
+
   },
 }).mount("#app");

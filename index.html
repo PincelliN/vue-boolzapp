@@ -92,7 +92,7 @@
                              <div class="logo">
                                  <img :src="contacts[index].avatar" :alt="contacts[index].name" />
                             </div>
-                        <div>
+                        <div class="contact-scroll">
                              <strong>{{contacts[0].name}}</strong>
                              <p>ultimo messaggio</p>
                         </div>
@@ -108,13 +108,13 @@
                 </div>
                 <div>
                     <div v-for="messag in contacts[index].messages " :class="(messag.status === 'received') ? 'left':'right'">
-                        {{messag.message}}
+                        {{messag.message}}     <i class="fa-solid fa-chevron-down"></i>
                         
                     </div>
                 </div>
                 <div>
                     <button> <i class="fa-regular fa-face-smile"></i></button>
-                    <input type="text">
+                    <input type="text" v-model="newmessage" @keypress.enter="AddMessage()">
                     <button><i class="fa-solid fa-microphone"></i></button>
                 </div>
 
@@ -123,7 +123,7 @@
       </div>
 
       </div>
-      <i class="fa-solid fa-chevron-down"></i>
+
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
