@@ -35,7 +35,7 @@
     display: flex;  
     padding: 5px; 
     width: 100%;
-     align-items: center; 
+     align-items: self-start; 
      justify-content: left;
    
      
@@ -84,6 +84,16 @@ img{
 }
 input{
     width: 90%;
-
+}
+.img-name{
+    display:flex;   
 }
 
+.right{
+    text-align: end;
+    padding: 10px;
+}
+.left{
+    text-align: start;
+    padding: 10px;
+}

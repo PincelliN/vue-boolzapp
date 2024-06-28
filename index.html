@@ -17,7 +17,7 @@
     <div id="app">
       <div id="container">
         <div id="contact">
-          <div class="contact-logo ">
+          <div class="contact-logo">
             <div class="user-logo">
               <div class="logo"><img src="img/batman.jpg" alt="" /></div>
               <strong>Batman</strong>
@@ -35,35 +35,93 @@
             </div>
           </div>
           <div class="contact-logo advisor">
-            <div v-show="notifiche==false" @click="notifiche=true" class="advisor-logo"><i class="fa-solid fa-bell"></i></div>
-            <div v-show="notifiche==true" @click="notifiche=false" class="advisor-logo"><i class="fa-solid fa-bell-slash"></i></div>
+            <div
+              v-show="notifiche==false"
+              @click="notifiche=true"
+              class="advisor-logo"
+            >
+              <i class="fa-solid fa-bell"></i>
+            </div>
+            <div
+              v-show="notifiche==true"
+              @click="notifiche=false"
+              class="advisor-logo"
+            >
+              <i class="fa-solid fa-bell-slash"></i>
+            </div>
             <div>
               <p>Ricevi Notifiche di nuovi messaggi</p>
               <a href="#">Attica notifiche desktop</a>
             </div>
           </div>
           <div class="contact-input">
-            <button @click="FilterShow=[]"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input type="text" placeholder="cerca una chat" @keypress.enter="IncludsFilter ()" v-model="FilterSelect"/>
+            <button @click="FilterShow=[]">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <input
+              type="text"
+              placeholder="cerca una chat"
+              @keypress.enter="IncludsFilter ()"
+              v-model="FilterSelect"
+            />
           </div>
           <div class="contact-scroll">
-            <div v-for="contact in contacts" class="contact-logo" v-show="!FilterShow.includes(contact.name)">
-              <div class="logo">
-                <img :src="contact.avatar" :alt="contact.name" />
+            <div
+              v-for="contact in contacts"
+              class="contact-logo"
+              v-show="!FilterShow.includes(contact.name)"
+            >
+              <div class="img-name">
+                <div class="logo">
+                  <img :src="contact.avatar" :alt="contact.name" />
+                </div>
+                <div>
+                  <strong>{{contact.name}}</strong>
+                  <p>ultimo messaggio</p>
+                </div>
               </div>
-              <strong>{{contact.name}}</strong>
+              data
             </div>
           </div>
         </div>
-        <div id="chat"></div>
+        <div id="chat">
+                <div> 
+                    <div  class="contact-logo" >
+                        <div class="img-name">
+                             <div class="logo">
+                                 <img :src="contacts[0].avatar" :alt="contacts[0].name" />
+                            </div>
+                        <div>
+                             <strong>{{contacts[0].name}}</strong>
+                             <p>ultimo messaggio</p>
+                        </div>
+                    </div>
+                    <div>
+                        <ul>
+                            <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                            <li><i class="fa-solid fa-paperclip"></i></li>
+                            <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                        </ul>
+                    </div>
+          
+                </div>
+                <div>
+                    <div v-for="messag in contacts[0].messages " :class="(messag.status === 'received') ? 'left':'right'">
+                        {{messag.message}}
+                        
+                    </div>
+                </div>
+                <div>
+                    <button> <i class="fa-regular fa-face-smile"></i></button>
+                    <input type="text">
+                    <button><i class="fa-solid fa-microphone"></i></button>
+                </div>
+
+
+        </div>
       </div>
 
-      <i class="fa-solid fa-bell"></i>
-      <i class="fa-solid fa-bell-slash"></i>
-      <i class="fa-regular fa-face-smile"></i>
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <i class="fa-solid fa-microphone"></i>
-      <i class="fa-solid fa-paperclip"></i>
+      </div>
       <i class="fa-solid fa-chevron-down"></i>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
