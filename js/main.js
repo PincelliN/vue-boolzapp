@@ -190,10 +190,15 @@ createApp({
       this.FilterSelect = "";
       console.log("guarda questo" + this.FilterShow);
     },
-
-    AddMessage() {
-        
-        
+    AddAnswer(){
+          let newans = {
+            date: "10/01/2020 15:30:55",
+            message: "ok",
+            status: "received",
+          };
+          this.contacts[this.index].messages.push(newans);
+        },
+    AddMessage() {   
       let newmes = {
         date: "10/01/2020 15:30:55",
         message: this.newmessage,
@@ -203,7 +208,11 @@ createApp({
       let Zone = this.contacts[this.index].messages.push(newmes);
       console.log(Zone);
       this.newmessage = "";
+      setTimeout(this.AddAnswer,1000)
     },
+    
+
+
     RemoveItem(index) {
       this.ToDoList.splice(index, 1);
     },
