@@ -177,15 +177,16 @@ createApp({
     IncludsFilter() {
       this.FilterShow = [];
       for (let index = 0; index < this.contacts.length; index++) {
-        console.log(this.contacts);
+        
         const element = this.contacts[index].name;
-        console.log(element);
-        const ElementSplit = element.split("");
-        console.log(ElementSplit);
-        if (!ElementSplit.includes(this.FilterSelect)) {
-          this.FilterShow.push(element);
-          console.log(this.FilterShow);
-        }
+         
+        const elementName = element.toLowerCase();
+        console.log(elementName);
+       let includ = elementName.indexOf(this.FilterSelect);
+       console.log("qui" + includ);
+       if (includ==-1) {
+        this.FilterShow.push(element); 
+       }
       }
       this.FilterSelect = "";
       console.log("guarda questo" + this.FilterShow);
