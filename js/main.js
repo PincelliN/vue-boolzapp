@@ -6,6 +6,7 @@ createApp({
       notifiche: false,
       index: 0,
       showdropdow:false,
+      isActive:false,
       newmessage: "",
       FilterSelect: "",
       FilterShow: [],
@@ -212,7 +213,7 @@ createApp({
       this.newmessage = "";
       setTimeout(this.AddAnswer,1000)
     },
-    
+   
 
 
     RemoveItem(index) {
