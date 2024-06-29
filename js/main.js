@@ -5,6 +5,7 @@ createApp({
     return {
       notifiche: false,
       index: 0,
+      numIndex:null,
       showdropdow:false,
       isActive:false,
       newmessage: "",
@@ -214,10 +215,11 @@ createApp({
       setTimeout(this.AddAnswer,1000)
     },
    
-
-
-    RemoveItem(index) {
-      this.ToDoList.splice(index, 1);
+    RemoveItem() {
+      this.contacts[this.index].messages.splice(
+        this.numIndex,
+        1
+      );
     },
   },
 }).mount("#app");

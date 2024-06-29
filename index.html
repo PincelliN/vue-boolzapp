@@ -131,15 +131,17 @@
 
           <div class="contact-scroll chat-table">
             <div
-              v-for="messag in contacts[index].messages "
-              :class="(messag.status === 'received') ? 'left':'right'"
+              v-for="(messag,num) in contacts[index].messages "
+              :class="messag.status === 'received' ? 'left':'right'"
             >
-              <div @mouseout="showdropdow=false" @mouseover="showdropdow=true">{{messag.message}}</div>
-              <div class="dropbtn"  
-              @click="isActive = !isActive"><i class="fa-solid fa-chevron-down"></i>
-              <div id="myDropdown" class="dropdown-content":class=" isActive === true? 'show':''">
-                  <a href="#home">info</a>
-                  <a href="#about">delete</a>
+              <div @click="numIndex = num">{{messag.message}}</div>
+              <div class="dropdown"  
+              @click="isActive = !isActive" v-show="numIndex == num" ><i class="fa-solid fa-chevron-down"></i>
+              <div id="myDropdown" class="dropdown-content"
+              :class="[ isActive === true? 'show':'' ,messag.status === 'received' ? 'float-left':'float-right'] "
+             >
+                  <a href="#">info</a>
+                  <a href="#" @click="RemoveItem()">delete</a>
                 </div>
               </div>
             </div>

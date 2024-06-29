@@ -222,18 +222,6 @@ white-space: nowrap;
   display: inline-block;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -253,4 +241,15 @@ white-space: nowrap;
 
 .dropdown a:hover {background-color: #ddd;}
 
-.show {display: block;}
+.show {
+    display: block;
+   
+}
+.float-right{
+ float: right;
+    right: 0;
+}
+.float-left{
+float: left;
+left: 0;
+}
