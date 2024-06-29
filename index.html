@@ -134,8 +134,8 @@
               v-for="messag in contacts[index].messages "
               :class="(messag.status === 'received') ? 'left':'right'"
             >
-              <div>{{messag.message}}</div>
-              <div><i class="fa-solid fa-chevron-down"></i></div>
+              <div @mouseout="showdropdow=false" @mouseover="showdropdow=true">{{messag.message}}</div>
+              <div v-show="showdropdow==true"><i class="fa-solid fa-chevron-down"></i></div>
             </div>
           </div>
           <div class="chat-message">

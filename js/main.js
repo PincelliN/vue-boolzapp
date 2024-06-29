@@ -5,6 +5,7 @@ createApp({
     return {
       notifiche: false,
       index: 0,
+      showdropdow:false,
       newmessage: "",
       FilterSelect: "",
       FilterShow: [],

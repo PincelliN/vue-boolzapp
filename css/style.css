@@ -17,7 +17,7 @@
     height: 90vh;
     display: flex;
     flex-wrap: nowrap;
-    border: 1px solid red;
+   
 }
 /*  contact general */
 #contact{
@@ -26,12 +26,13 @@
     justify-content: flex-start;
     width: 30%;
     height: 100%;
-    border: 1px solid green;
+     background-color: rgb(214, 213, 213);
 }
 /* contact child  */
 .contact-header{
     display: flex;
     align-items: center;
+    background-color: rgb(172, 172, 172);
 }
 .logo-header{
     display: flex;
@@ -62,7 +63,7 @@ padding: 5px;
 background-color: aqua;
 }
 .notification-bell{
-    border: 1px solid black;
+   
     border-radius: 50%;
     padding: 3px;
     aspect-ratio: 1/1;
@@ -87,7 +88,7 @@ input{
     display: flex;
     align-items: center;
     padding: 10px;
-    border: 1px solid black;
+    
     border-radius: 25px;
     margin: 5px;
 }
@@ -117,7 +118,7 @@ white-space: nowrap;
     justify-content: space-between;
     width: 70%;
     height: 100%;
-    border: 1px solid blue;
+    background-color:rgb(172, 172, 172);
 }
 /* chat general */
 .chat-contact-header{
@@ -132,8 +133,9 @@ white-space: nowrap;
      height: 100px;  
      margin: 10px;
      padding: 5px;
-     border: 1px solid black;
+     
      border-radius: 25px;
+    
 }
 .chat-logo-box{
     width: 20%;
@@ -143,13 +145,15 @@ white-space: nowrap;
 }
 .chat-table{
     flex-grow:1;
-    border: 1px solid black;
     margin: 10px;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     padding: 10px;
+    background-image: url(../img/bat-wall.jpg);
+    background-size: cover;
+    background-position: bottom;
 }
 .user-logo{
     display: flex;  
@@ -175,7 +179,7 @@ white-space: nowrap;
 .right{
     max-width: 50%;
     padding: 10px;
-    border: 1px solid black;
+
     border-radius: 25px;
     display: flex;
     gap: 5px;
@@ -187,12 +191,12 @@ white-space: nowrap;
     max-width: 50%;
     align-self: flex-start;
     padding: 10px;
-    border: 1px solid black;
+    
     border-radius: 25px;
     display: flex;
     gap: 5px;
     margin: 5px 0;
-    background-color: gold;
+    background-color: rgb(247, 246, 245);
 }
 
 
@@ -208,4 +212,7 @@ white-space: nowrap;
 }
 .chat-message>*{
     height: 23px;
+}
+.contact-group:hover{
+    background-color: rgb(187, 187, 187);
 }
