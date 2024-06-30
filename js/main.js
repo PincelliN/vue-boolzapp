@@ -191,7 +191,7 @@ createApp({
         this.FilterShow.push(element); 
        }
       }
-      this.FilterSelect = "";
+        this.FilterSelect = ""; 
       console.log("guarda questo" + this.FilterShow);
     },
     AddAnswer(){
@@ -214,12 +214,25 @@ createApp({
       this.newmessage = "";
       setTimeout(this.AddAnswer,1000)
     },
+    LastMessageHoure(i){
+     let Hour= this.contacts[i].messages[
+        this.contacts[i].messages.length - 1
+      ].date;
+      console.log(Hour);
+      let LastHour=Hour.split(' ');
+      let HourMinute = LastHour[1].split(":");
+      console.log(HourMinute);
+      let newHourMinure = HourMinute[0] +':'+ HourMinute[1];
+      console.log(newHourMinure);
+      return newHourMinure;
+    },
    
     RemoveItem() {
       this.contacts[this.index].messages.splice(
         this.numIndex,
         1
       );
+
     },
   },
 }).mount("#app");
