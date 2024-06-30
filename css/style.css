@@ -151,9 +151,10 @@ white-space: nowrap;
     flex-direction: column;
     align-items: flex-end;
     padding: 10px;
-    background-image: url(../img/bat-wall.jpg);
-    background-size: cover;
-    background-position: bottom;
+    /* background-image: url(../img/bat-wall.jpg); */
+    background-size: contain;
+    background-position: center;
+    
 }
 .user-logo{
     display: flex;  

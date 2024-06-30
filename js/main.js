@@ -13,8 +13,9 @@ createApp({
       FilterShow: [],
       contacts: [
         {
-          name: "Michele",
+          name: "Ant man",
           avatar: "img/Ant.jpg",
+          wall:"img/ant-wall.jpg",
           visible: true,
           messages: [
             {
@@ -35,8 +36,9 @@ createApp({
           ],
         },
         {
-          name: "Fabio",
+          name: "Captain",
           avatar: "img/cap.jpg",
+          wall:"img/cap-wall.jpg",
           visible: true,
           messages: [
             {
@@ -57,8 +59,9 @@ createApp({
           ],
         },
         {
-          name: "Samuele",
+          name: "Ciclope",
           avatar: "img/Ciclop.jpg",
+          wall:"img/ciclopwall.jpg",
           visible: true,
           messages: [
             {
@@ -79,8 +82,9 @@ createApp({
           ],
         },
         {
-          name: "Alessandro B.",
+          name: "Doctor Strange",
           avatar: "img/doctor.jpg",
+          wall:"img/strange-wall.jpg",
           visible: true,
           messages: [
             {
@@ -96,8 +100,9 @@ createApp({
           ],
         },
         {
-          name: "Alessandro L.",
+          name: "Iron Man",
           avatar: "img/Iron.jpg",
+          wall:"img/iron-wall.jpg",
           visible: true,
           messages: [
             {
@@ -113,8 +118,9 @@ createApp({
           ],
         },
         {
-          name: "Claudia",
+          name: "Vedova Nera",
           avatar: "img/Vedova.jpg",
+          wall:"img/vedova-wall.png",
           visible: true,
           messages: [
             {
@@ -135,8 +141,9 @@ createApp({
           ],
         },
         {
-          name: "Federico",
+          name: "Thanos",
           avatar: "img/thanos.jpg",
+          wall:"img/Thanos_Gauntlet.webp",
           visible: true,
           messages: [
             {
@@ -152,8 +159,9 @@ createApp({
           ],
         },
         {
-          name: "Davide",
+          name: "Spider Man",
           avatar: "img/Spidy.jpg",
+          wall:"img/venom.jpg",
           visible: true,
           messages: [
             {
@@ -185,7 +193,7 @@ createApp({
          
         const elementName = element.toLowerCase();
         console.log(elementName);
-       let includ = elementName.indexOf(this.FilterSelect);
+       let includ = elementName.indexOf(this.FilterSelect.toLowerCase());
        console.log("qui" + includ);
        if (includ==-1) {
         this.FilterShow.push(element); 
@@ -209,7 +217,7 @@ createApp({
         status: "send",
       };
       console.log(newmes);
-      let Zone = this.contacts[this.index].messages.push(newmes);
+       this.contacts[this.index].messages.push(newmes);
       
       this.newmessage = "";
       setTimeout(this.AddAnswer,1000)

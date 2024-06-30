@@ -129,7 +129,7 @@
             </div>
           </div>
 
-          <div class="contact-scroll chat-table">
+          <div class="contact-scroll chat-table" :style="{ backgroundImage: 'url('+ contacts[index].wall +')' }">
             <div
               v-for="(messag,num) in contacts[index].messages "
               :class="messag.status === 'received' ? 'left':'right'"
