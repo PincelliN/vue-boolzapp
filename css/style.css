@@ -204,6 +204,11 @@ white-space: nowrap;
 .chat-header-img{
     height: 100%;
 }
+.chat-logo-box>img{
+    border-radius: 100px;
+    width: 50px;
+    aspect-ratio: 1/1;
+}
 .chat-header-text{
     flex-grow: 1;
 }
