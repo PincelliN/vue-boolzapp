@@ -196,7 +196,7 @@ createApp({
     },
     AddAnswer(){
           let newans = {
-            date: "10/01/2020 15:30:55",
+            date: this.NewTime(),
             message: "ok",
             status: "received",
           };
@@ -204,13 +204,13 @@ createApp({
         },
     AddMessage() {   
       let newmes = {
-        date: "10/01/2020 15:30:55",
+        date: this.NewTime(),
         message: this.newmessage,
         status: "send",
       };
       console.log(newmes);
       let Zone = this.contacts[this.index].messages.push(newmes);
-      console.log(Zone);
+      
       this.newmessage = "";
       setTimeout(this.AddAnswer,1000)
     },
@@ -218,13 +218,35 @@ createApp({
      let Hour= this.contacts[i].messages[
         this.contacts[i].messages.length - 1
       ].date;
-      console.log(Hour);
+      
       let LastHour=Hour.split(' ');
       let HourMinute = LastHour[1].split(":");
-      console.log(HourMinute);
+      
       let newHourMinure = HourMinute[0] +':'+ HourMinute[1];
-      console.log(newHourMinure);
+      
       return newHourMinure;
+    },
+    NewTime(){
+      const Time =
+        this.contacts[this.index].messages[this.contacts[this.index].messages.length - 1 ].date;
+        
+        const TimeSplit = Time.split(' ');
+        const NewTimeSplit = TimeSplit[1].split(':');
+        if (NewTimeSplit[1] == 59) {
+          NewTimeSplit[1] = 0;
+          NewTimeSplit[0] = parseInt(NewTimeSplit[0]) + 1;
+        }
+        const IncrisNewTimeSplit =parseInt(NewTimeSplit[1]) + 1;
+        const LastTime =
+          TimeSplit[0] +
+          " " +
+          NewTimeSplit[0] +
+          ":" +
+          IncrisNewTimeSplit +
+          ":" +
+          NewTimeSplit[2];
+         
+          return LastTime
     },
    
     RemoveItem() {
