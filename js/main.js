@@ -5,9 +5,9 @@ createApp({
     return {
       notifiche: false,
       index: 0,
-      numIndex:null,
-      showdropdow:false,
-      isActive:false,
+      numIndex: null,
+      showdropdow: false,
+      isActive: false,
       newmessage: "",
       FilterSelect: "",
       FilterShow: [],
@@ -15,8 +15,14 @@ createApp({
         {
           name: "Ant man",
           avatar: "img/Ant.jpg",
-          wall:"img/ant-wall.jpg",
+          wall: "img/ant-wall.jpg",
           visible: true,
+          cit: [
+            "é troppo tardi per cambiare nome?",
+            "Voi mettete la parola quantistica in tutte le frasi. ",
+            "Se vuoi una cosa fatta bene stendi una lista. ",
+            "Perché non possono riconoscerci? Perché indossiamo cappello ed occhiali? Sembriamo noi stessi a una partita di basket. ",
+          ],
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -38,8 +44,14 @@ createApp({
         {
           name: "Captain",
           avatar: "img/cap.jpg",
-          wall:"img/cap-wall.jpg",
+          wall: "img/cap-wall.jpg",
           visible: true,
+          cit: [
+            "Arrendermi? ARRENDERMI!? CREDI CHE QUESTA LETTERA SIGNIFICHI FRANCIA?",
+            "L'Hydra non ha teste a sufficienza per mettermi K.O.",
+            "Quando ero congelato, il mondo era in guerra. Mi sveglio e dicono che abbiamo vinto. Ma non che cosa abbiamo perso",
+            "Se cominci a scappare non ti fermi più. Li affronti, ti ribelli. Devi andare avanti lo stesso, no?",
+          ],
           messages: [
             {
               date: "20/03/2020 16:30:00",
@@ -61,8 +73,14 @@ createApp({
         {
           name: "Ciclope",
           avatar: "img/Ciclop.jpg",
-          wall:"img/ciclopwall.jpg",
+          wall: "img/ciclopwall.jpg",
           visible: true,
+          cit: [
+            "Nel tipo di carriera per cui ci stiamo preparando, non esiste la parola 'giusto'!",
+            " Beh, cosa preferiresti?! Una calzamaglia gialla?!",
+            "Beh, probabilmente ti brucia che un ragazzino come me ti abbia salvato la vita, eh?! Però sta attento, la prossima volta potrei non esserci! Ah, Logan... Sta alla larga dalla mia ragazza!",
+            "Lei mi ha insegnato tutto quello che nella vita vale la pena di sapere... E se dovesse succederle qualcosa... Mi prenderò cura io di loro!",
+          ],
           messages: [
             {
               date: "28/03/2020 10:10:40",
@@ -84,8 +102,14 @@ createApp({
         {
           name: "Doctor Strange",
           avatar: "img/doctor.jpg",
-          wall:"img/strange-wall.jpg",
+          wall: "img/strange-wall.jpg",
           visible: true,
+          cit: [
+            "Attraverso le arti mistiche imbrigliamo l'energia e plasmiamo la realtà. Percorriamo grandidistanze, in un istante.",
+            "Non tutto ha senso. Non tutto deve averlo.",
+            "Non c'è limite all'impossibile.",
+            "Apri la mente. Cambia la realtà.",
+          ],
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -102,8 +126,14 @@ createApp({
         {
           name: "Iron Man",
           avatar: "img/Iron.jpg",
-          wall:"img/iron-wall.jpg",
+          wall: "img/iron-wall.jpg",
           visible: true,
+          cit: [
+            "Dammi uno scotch. Sto morendo di fame",
+            "Tieniti forte, Legolas",
+            "Te l’ho detto. Non voglio unirmi alla tua boyband super segreta",
+            "”Iron Man.” Accattivante, suona bene. Non è tecnicamente preciso. L'armatura è in lega di oro e titanio, ma è un nome evocativo, simbolico",
+          ],
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -120,8 +150,14 @@ createApp({
         {
           name: "Vedova Nera",
           avatar: "img/Vedova.jpg",
-          wall:"img/vedova-wall.png",
+          wall: "img/vedova-wall.png",
           visible: true,
+          cit: [
+            "A un certo punto bisogna scegliere tra quello che il mondo vuole che tu sia e chi sei veramente.",
+            "Ho vissuto molte vite, ma non voglio fuggire dal passato.",
+            "Volevo fare qualcosa di buono: essere più di una killer esperta.",
+            "Prima di lavorare per lo S.H.I.E.L.D, io.... beh, avevo una certa popolarità. Sono dotata di un'abilità molto specifica. Non mi importava per chi la usassi, o su chi. Ero sui radar dello S.H.I.E.L.D. con profilo negativo. Inviarono l'agente Barton ad uccidermi. Lui decise in modo diverso.",
+          ],
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -143,8 +179,14 @@ createApp({
         {
           name: "Thanos",
           avatar: "img/thanos.jpg",
-          wall:"img/Thanos_Gauntlet.webp",
+          wall: "img/Thanos_Gauntlet.webp",
           visible: true,
+          cit: [
+            "L'unica faccenda che non prendo sul serio, bimbo... sei tu. La tua politica mi annoia! La tua condotta è quello di un neonato lamentoso, e a quanto pare hai reso ostile la mia figlia preferita, Gamora. Terrò fede al nostro accordo, Kree, se mi porterai l'Orb... ma se tornerai di nuovo a mani vuote, le stelle si bagneranno nel tuo sangue impuro",
+            "Questo universo è limitato, come le sue risorse. Se la vita viene lasciata incontrollata, cesserà di esistere. Servono correttivi! Io sono l'unico che lo sa. Almeno, io sono l'unico con la volontà di intervenire.",
+            "Con le sei gemme, mi basterebbero solo schioccare le dita. Cesserebbero tutti di esistere. Io lo chiamo pietà.Infine mi riposerò... e guarderò il sole sorgere su un universo grato. Le scelte più difficili richiedono la volontà più ferrea.",
+            "Io sono... ineluttabile.",
+          ],
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -161,8 +203,14 @@ createApp({
         {
           name: "Spider Man",
           avatar: "img/Spidy.jpg",
-          wall:"img/venom.jpg",
+          wall: "img/venom.jpg",
           visible: true,
+          cit: [
+            "Devi stare con i piedi per terra, sviluppa le tue capacità con la gente comune, come la signora che ti ha comprato il churro. Non puoi essere un 'amichevole Spider-Man di quartiere'?",
+            "Tu lo sai chi sono io. Il tuo amichevole Spider-Man di quartiere!",
+            "Qualunque cosa la vita abbia in serbo per me, non dimenticherò mai queste parole: 'Da un grande potere derivano grandi responsabilità'. È il mio talento, è la mia maledizione. Chi sono io? Sono Spider-Man!",
+            "D'accordo, ve lo racconto un'ultima volta. Mi chiamo Peter Parker, sono stato morso da un ragno radioattivo e per dieci anni sono stato il solo e unico Spider-Man. Il resto lo sapete. Ho salvato un sacco di gente, mi sono innamorato, ho salvato la città, poi ho salvato di nuovo la città, di nuovo e di nuovo e... di nuovo. E ho fatto... Ho fatto questo. Ma non ne parliamo adesso. Allora, sono un fumetto, dei cereali, ho inciso un disco di Natale, ho una sigla favolosa... e sono un ghiacciolo bruttarello. Be', sono stato anche peggio. Tutto considerato, ancora mi piace essere Spider-Man; a chi non piacerebbe? Quindi non importa quanti colpi prendo, trovo sempre il modo di rialzarmi. Perché l'unica cosa che separa questa città dall'oblio... Sono io! C'è un solo Spider-Man, e lo state vedendo!",
+          ],
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -216,7 +264,8 @@ createApp({
     AddAnswer(){
           let newans = {
             date: this.NewTime(),
-            message: "ok",
+            message:
+              this.contacts[this.index].cit[Math.floor(Math.random() * 4)],
             status: "received",
           };
            
