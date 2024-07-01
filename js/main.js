@@ -185,22 +185,33 @@ createApp({
     };
   },
   methods: {
+    /* - ogni volta che eseguo la funzione svuoto l'array che usero come filtro
+       - inizio un ciclo della lunghezza dell array contacts
+       - creo una variabile di valore uguale alla propietà name
+       - trasformo tutti gli elementi della variabile in caratteri minuscoli
+       - vedo se l'input che prelevo in pagina è incluso nella varibile e ne creo una variabile di valore uguale alla posizione in cui è incluso l'input
+       - se l'input non è incluso metto l'elemento nel array che prima ho svuotato
+       - puliasco il campo del input     
+    */
     IncludsFilter() {
       this.FilterShow = [];
+
       for (let index = 0; index < this.contacts.length; index++) {
         
         const element = this.contacts[index].name;
          
         const elementName = element.toLowerCase();
-        console.log(elementName);
+        
        let includ = elementName.indexOf(this.FilterSelect.toLowerCase());
-       console.log("qui" + includ);
+      
        if (includ==-1) {
-        this.FilterShow.push(element); 
+
+        this.FilterShow.push(element);
+
        }
       }
         this.FilterSelect = ""; 
-      console.log("guarda questo" + this.FilterShow);
+     
     },
     AddAnswer(){
           let newans = {
@@ -208,32 +219,46 @@ createApp({
             message: "ok",
             status: "received",
           };
-          this.contacts[this.index].messages.push(newans);
+           
+             this.contacts[this.index].messages.push(newans);
+           
+          this.newmessage = "";
         },
+        /* - creo un oggetto con le stesse propietà dell array messages
+           - assegno il valore alla propietà date con una funzione
+           - assegno la variabile newmessage alla propietà message
+           - se newmessage è diverso da nullo allora lo inserisco nel array messages
+           - una volta che inserisco newmessage nel array allora faccio partire un timer che automatizza la risposta 
+        */
     AddMessage() {   
       let newmes = {
         date: this.NewTime(),
         message: this.newmessage,
         status: "send",
       };
-      console.log(newmes);
-       this.contacts[this.index].messages.push(newmes);
       
-      this.newmessage = "";
-      setTimeout(this.AddAnswer,1000)
+      if (this.newmessage != "" ) {
+        this.contacts[this.index].messages.push(newmes);
+        setTimeout(this.AddAnswer,1000)
+      }   
     },
+
+    /* funzione per ottenere l'ora e i minuti dalla propietà data  */
     LastMessageHoure(i){
      let Hour= this.contacts[i].messages[
         this.contacts[i].messages.length - 1
       ].date;
       
-      let LastHour=Hour.split(' ');
+      let LastHour=Hour.split(' '); 
+
       let HourMinute = LastHour[1].split(":");
       
       let newHourMinure = HourMinute[0] +':'+ HourMinute[1];
       
       return newHourMinure;
     },
+
+    /* per ognio nuovo messaggio genero una nuova data incrementata */
     NewTime(){
       const Time =
         this.contacts[this.index].messages[this.contacts[this.index].messages.length - 1 ].date;
@@ -256,8 +281,15 @@ createApp({
          
           return LastTime
     },
-   
+   /* funzione per rimuovere  un messaggio in pagina */
     RemoveItem() {
+      if (this.contacts[this.index].messages.length == 1) {
+        this.contacts[this.index].messages.push({
+          date: this.NewTime(),
+          message: "inizia una nuova conversazioene",
+          status: "",
+        });
+      }
       this.contacts[this.index].messages.splice(
         this.numIndex,
         1

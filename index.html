@@ -23,140 +23,195 @@
     <div id="app">
       <div id="container">
         <div id="contact">
-          <!-- sezione  Utente -->
-          <div class="contact-header">
-            <div class="logo-header">
-              <div class="logo-header-img">
-                <img src="img/batman.jpg" alt="" />
-              </div>
-              <div class="logo-header-text"><strong>Batman</strong></div>
-            </div>
-            <div>
-              <ul>
-                <li>
-                  <a href="#"></a><i class="fa-solid fa-circle-notch"></i>
-                </li>
-                <li><a href="#"></a><i class="fa-solid fa-message"></i></li>
-                <li>
-                  <a href="#"></a><i class="fa-solid fa-ellipsis-vertical"></i>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <!-- Sezione  Utente -->
 
-          <!-- Sezione notifiche  -->
-          <div class="contact-notification">
-            <div
-              v-show="notifiche==false"
-              @click="notifiche=true"
-              class="notification-bell"
-            >
-              <i class="fa-solid fa-bell"></i>
+          <header>
+            <div class="contact-header">
+              <!-- Logo e NomeUser -->
+              <div class="logo-header">
+                <div class="logo-header-img">
+                  <img src="img/batman.jpg" alt="" />
+                </div>
+                <div class="logo-header-text"><strong>Batman</strong></div>
+              </div>
+              <!-- Lista Comandi -->
+              <div>
+                <ul>
+                  <li>
+                    <a href="#"></a><i class="fa-solid fa-circle-notch"></i>
+                  </li>
+                  <li><a href="#"></a><i class="fa-solid fa-message"></i></li>
+                  <li>
+                    <a href="#"></a
+                    ><i class="fa-solid fa-ellipsis-vertical"></i>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div
-              v-show="notifiche==true"
-              @click="notifiche=false"
-              class="notification-bell"
-            >
-              <i class="fa-solid fa-bell-slash"></i>
-            </div>
-            <div>
-              <p>Ricevi Notifiche di nuovi messaggi</p>
-              <a href="#" v-show="notifiche==true">Attiva notifiche desktop</a>
-              <a href="#" v-show="notifiche==false"
-                >Disattiva notifiche desktop</a
+          </header>
+          <!-- Sezione Notifiche  -->
+          <section>
+            <div class="contact-notification">
+              <!-- condizione per modificare testo e icone notifiche -->
+              <div
+                v-show="notifiche==false"
+                @click="notifiche=true"
+                class="notification-bell"
               >
-            </div>
-          </div>
-
-          <!-- section filter chat -->
-          <div class="contact-input">
-            <button @click="FilterShow=[]">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <input
-              type="text"
-              placeholder="cerca una chat"
-              @keypress.enter="IncludsFilter ()"
-              v-model="FilterSelect"
-            />
-          </div>
-
-          <!--  section chat group -->
-          <div class="contact-scroll">
-            <div
-              v-for="(contact,i) in contacts"
-              class="contact-group"
-              v-show="!FilterShow.includes(contact.name)"
-              @click="index=i"
-            >
-              <div class="contact-group-user">
-                <div class="contact-group-user-img">
-                  <img :src="contact.avatar" :alt="contact.name" />
-                </div>
-                <div class="contact-group-user-text">
-                  <strong>{{contact.name}}</strong>
-                  <p class="contact-group-text">
-                    {{contact.messages[contact.messages.length-1].message}}
-                  </p>
-                </div>
-                <small>{{LastMessageHoure(i)}}</small>
+                <i class="fa-solid fa-bell"></i>
+              </div>
+              <div
+                v-show="notifiche==true"
+                @click="notifiche=false"
+                class="notification-bell"
+              >
+                <i class="fa-solid fa-bell-slash"></i>
+              </div>
+              <div>
+                <p>Ricevi Notifiche di nuovi messaggi</p>
+                <a href="#" v-show="notifiche==true"
+                  >Attiva notifiche desktop</a
+                >
+                <a href="#" v-show="notifiche==false"
+                  >Disattiva notifiche desktop</a
+                >
               </div>
             </div>
-          </div>
-        </div>
-        <div id="chat">
-          <div class="chat-header">
-            <div class="chat-logo-box">
-              <img
-                class="chat-header-img"
-                :src="contacts[index].avatar"
-                :alt="contacts[index].name"
+          </section>
+          <!-- Sezione Input Filter -->
+          <section>
+            <div class="contact-input">
+              <!-- Al click svuoto l'array utilizata per ffiltrare i contatti -->
+              <button @click="FilterShow=[]">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <input
+                type="text"
+                placeholder="cerca una chat"
+                @keypress.enter="IncludsFilter ()"
+                v-model="FilterSelect"
               />
             </div>
-            <div class="chat-header-text">
-              <strong>{{contacts[index].name}}</strong>
-              <p>
-                {{contacts[index].messages[contacts[index].messages.length-1].message}}
-                 <small>{{LastMessageHoure(contacts[index].messages.length-1)}}</small>
-              </p>
-            </div>
-            <div>
-              <ul>
-                <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                <li><i class="fa-solid fa-paperclip"></i></li>
-                <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
-              </ul>
-            </div>
-          </div>
+          </section>
+          <!--  Sezione Gruppo -->
 
-          <div class="contact-scroll chat-table" :style="{ backgroundImage: 'url('+ contacts[index].wall +')' }">
+          <div class="contact-scroll">
+            <section>
+              <!-- ciclo per creare tanti contatti quanti la lunghezza dell array contacts -->
+               <!-- condizione per mostrare i contatti se filtrati -->
+                <!-- al click modifico il valore index  che utilizzo come variabile -->
+              <div
+                v-for="(contact,i) in contacts"
+                class="contact-group"
+                v-show="!FilterShow.includes(contact.name)"
+                @click="index=i"
+                :class="index == i ? 'active':''"
+              >
+                <div class="contact-group-user">
+                  <div class="contact-group-user-img">
+                    <!-- modifico src e alt in base al contatto -->
+                    <img :src="contact.avatar" :alt="contact.name" />
+                  </div>
+                  <div class="contact-group-user-text">
+                    <strong>{{contact.name}}</strong>
+                    <p class="contact-group-text">
+                      <!-- il testo corrisponde al ultimo messaggio di ogni contatto  -->
+                      {{contact.messages[contact.messages.length-1].message}}
+                    </p>
+                  </div>
+                  <!-- l'ora corrisponde al ora del ultimo messaggio inviato -->
+                  <small>{{LastMessageHoure(i)}}</small>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!-- Sezione Chat -->
+        <div id="chat">
+          <!-- Sezione Chat Corrente Info -->
+          <section>
+            <div class="chat-header">
+              <div class="chat-logo-box">
+                <img
+                  class="chat-header-img"
+                  :src="contacts[index].avatar"
+                  :alt="contacts[index].name"
+                />
+              </div>
+              <div class="chat-header-text">
+                <strong>{{contacts[index].name}}</strong>
+                <p>
+                  <!-- il testo corrisponde all' ultimo messaggio di ogni contatto  -->
+                  {{contacts[index].messages[contacts[index].messages.length-1].message}}
+                  <!-- l'ora corrisponde all' ora del ultimo messaggio inviato -->
+                  <small      
+                    >{{contacts[index].messages[contacts[index].messages.length-1].date}}</small
+                  >
+                </p>
+              </div>
+              <div>
+                <ul>
+                  <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                  <li><i class="fa-solid fa-paperclip"></i></li>
+                  <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <!-- Messaggi Chat -->
+          <!-- cambio lo sfondo della chat in base al volore del index -->
+          <div
+            class="contact-scroll chat-table"
+            :style="{ backgroundImage: 'url('+ contacts[index].wall +')' }"
+          >
+          <!-- stampo tutti i messaggi relativi al contatto -->
+           <!-- se il messaggio e del utente oppure del contatto gli assegno classi diverse -->
             <div
+            
               v-for="(messag,num) in contacts[index].messages "
               :class="messag.status === 'received' ? 'left':'right'"
             >
+            <!-- al click creo una variabile di valore pari al index del messaggio  -->
               <div @click="numIndex = num">{{messag.message}}</div>
-              <div class="dropdown"  
-              @click="isActive = !isActive" v-show="numIndex == num" ><i class="fa-solid fa-chevron-down"></i>
-              <div id="myDropdown" class="dropdown-content"
-              :class="[ isActive === true? 'show':'' ,messag.status === 'received' ? 'float-left':'float-right'] "
-             >
+              <!-- classe del droopdown -->
+              <div
+                class="dropdown"
+                @click="isActive = !isActive"
+                v-show="numIndex == num"
+              >
+                <i class="fa-solid fa-chevron-down"></i>
+                <!-- classi da associare al droopdown -->
+                <div
+                  id="myDropdown"
+                  class="dropdown-content"
+                  :class="[ isActive === true? 'show':'' ,messag.status === 'received' ? 'float-left':'float-right'] "
+                >
                   <a href="#">info</a>
                   <a href="#" @click="RemoveItem()">delete</a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="chat-message">
-            <button><i class="fa-regular fa-face-smile"></i></button>
-            <input
-              type="text"
-              v-model="newmessage"
-              @keypress.enter="AddMessage()"
-              placeholder="scrivi un nuovo messagio"
-            />
-            <button><i class="fa-solid fa-microphone"></i></button>
-          </div>
+
+          <!-- Sezione Nuovi Messaggi -->
+          <footer>
+            <div class="chat-message">
+              <button><i class="fa-regular fa-face-smile"></i></button>
+              <input
+                type="text"
+                v-model="newmessage"
+                @keypress.enter="AddMessage()"
+                placeholder="scrivi un nuovo messagio"
+              />
+              <button v-show=" newmessage == '' ">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <button v-show=" newmessage != '' ">
+                <i class="fa-brands fa-telegram" @click="AddMessage()"></i>
+              </button>
+            </div>
+          </footer>
         </div>
       </div>
     </div>
