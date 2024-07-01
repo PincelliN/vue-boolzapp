@@ -332,18 +332,17 @@ createApp({
     },
    /* funzione per rimuovere  un messaggio in pagina */
     RemoveItem() {
+
+
       if (this.contacts[this.index].messages.length == 1) {
-        this.contacts[this.index].messages.push({
-          date: this.NewTime(),
-          message: "inizia una nuova conversazioene",
-          status: "",
-        });
-      }
+      this.contacts.splice(this.index,1);
+      }else{
       this.contacts[this.index].messages.splice(
         this.numIndex,
         1
       );
-
+      }
+        
     },
   },
 }).mount("#app");
