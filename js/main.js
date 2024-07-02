@@ -279,9 +279,25 @@ createApp({
            - se newmessage è diverso da nullo allora lo inserisco nel array messages
            - una volta che inserisco newmessage nel array allora faccio partire un timer che automatizza la risposta 
         */
-    AddMessage() {   
+    AddMessage() { 
+      let DateTime = luxon.DateTime;
+
+      const NewDateTime =
+        DateTime.now().c.day +
+        "/" +
+        DateTime.now().c.month +
+        "/" +
+        DateTime.now().c.year +
+        "  " +
+        DateTime.now().c.hour +
+        ":" +
+        DateTime.now().c.minute +
+        ":" +
+        DateTime.now().c.second;
+      
+
       let newmes = {
-        date: this.NewTime(),
+        date: NewDateTime,
         message: this.newmessage,
         status: "send",
       };
@@ -309,11 +325,16 @@ createApp({
 
     /* per ognio nuovo messaggio genero una nuova data incrementata */
     NewTime(){
+
+
       const Time =
         this.contacts[this.index].messages[this.contacts[this.index].messages.length - 1 ].date;
         
+        console.log(Time);
         const TimeSplit = Time.split(' ');
-        const NewTimeSplit = TimeSplit[1].split(':');
+        console.log(TimeSplit);
+        const NewTimeSplit = TimeSplit[2].split(':');
+        console.log(NewTimeSplit);
         if (NewTimeSplit[1] == 59) {
           NewTimeSplit[1] = 0;
           NewTimeSplit[0] = parseInt(NewTimeSplit[0]) + 1;
@@ -345,4 +366,30 @@ createApp({
         
     },
   },
+  mounted(){
+    let DateTime = luxon.DateTime;
+
+    const NewDateTime =
+      DateTime.now().c.day +
+      "/" +
+      DateTime.now().c.month +
+      "/" +
+      DateTime.now().c.year +
+      "  " +
+      DateTime.now().c.hour +
+      ":" +
+      DateTime.now().c.minute +
+      ":" +
+      DateTime.now().c.second;
+     
+    console.log(NewDateTime);
+    console.log(DateTime.now().c.hour);
+    console.log(DateTime.now().c.minute);
+    console.log(DateTime.now().c.day);
+    console.log(DateTime.now().c.second);
+    console.log(DateTime.now().c.month);
+    console.log(DateTime.now().c.year);
+    
+    console.log(DateTime.now().c);
+  }
 }).mount("#app");
