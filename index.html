@@ -82,9 +82,10 @@
           <section>
             <div class="contact-input">
               <!-- Al click svuoto l'array utilizata per ffiltrare i contatti -->
-              <button @click="FilterShow=[]">
-                <i class="fa-solid fa-magnifying-glass"></i>
+              <button v-if="FilterShow.length != 0" @click="FilterShow=[]">
+                <i class="fa-solid fa-trash"></i>
               </button>
+              <button v-else><i class="fa-solid fa-magnifying-glass"></i></button>
               <input
                 type="text"
                 placeholder="cerca una chat"
@@ -98,8 +99,8 @@
           <div class="contact-scroll">
             <section>
               <!-- ciclo per creare tanti contatti quanti la lunghezza dell array contacts -->
-               <!-- condizione per mostrare i contatti se filtrati -->
-                <!-- al click modifico il valore index  che utilizzo come variabile -->
+              <!-- condizione per mostrare i contatti se filtrati -->
+              <!-- al click modifico il valore index  che utilizzo come variabile -->
               <div
                 v-for="(contact,i) in contacts"
                 class="contact-group"
@@ -114,7 +115,7 @@
                   </div>
                   <div class="contact-group-user-text">
                     <strong>{{contact.name}}</strong>
-                    <p class="contact-group-text" >
+                    <p class="contact-group-text">
                       <!-- il testo corrisponde al ultimo messaggio di ogni contatto  -->
                       {{contact.messages[contact.messages.length-1].message}}
                     </p>
@@ -144,13 +145,14 @@
                 <p v-if="OnlineValue == 'A'">
                   <!-- il testo corrisponde all' ultimo messaggio di ogni contatto  -->
                   {{contacts[index].messages[contacts[index].messages.length-1].message}}
-                  <!-- l'ora corrisponde all' ora del ultimo messaggio inviato --> 
+                  <!-- l'ora corrisponde all' ora del ultimo messaggio inviato -->
                 </p>
                 <p v-else-if="OnlineValue == 'B'">...Sta Scrivendo...</p>
                 <p v-else-if="OnlineValue == 'C'">...Online...</p>
-                <small v-if="OnlineValue != 'B'"     
-                    >ultimo messaggio{{contacts[index].messages[contacts[index].messages.length-1].date}}</small
-                  >
+                <small v-if="OnlineValue != 'B'"
+                  >ultimo
+                  messaggio{{contacts[index].messages[contacts[index].messages.length-1].date}}</small
+                >
               </div>
               <div>
                 <ul>
@@ -167,14 +169,13 @@
             class="contact-scroll chat-table"
             :style="{ backgroundImage: 'url('+ contacts[index].wall +')' }"
           >
-          <!-- stampo tutti i messaggi relativi al contatto -->
-           <!-- se il messaggio e del utente oppure del contatto gli assegno classi diverse -->
+            <!-- stampo tutti i messaggi relativi al contatto -->
+            <!-- se il messaggio è del utente oppure del contatto gli assegno classi diverse -->
             <div
-            
-              v-for="(messag,num) in contacts[index].messages "
+              v-for=" (messag,num) in contacts[index].messages "
               :class="messag.status === 'received' ? 'left':'right'"
             >
-            <!-- al click creo una variabile di valore pari al index del messaggio  -->
+              <!-- al click creo una variabile di valore pari al index del messaggio  -->
               <div @click="numIndex = num">{{messag.message}}</div>
               <!-- classe del droopdown -->
               <div
@@ -217,7 +218,7 @@
         </div>
       </div>
     </div>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.3.0/luxon.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.3.0/luxon.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </body>

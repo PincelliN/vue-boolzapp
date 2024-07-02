@@ -245,8 +245,6 @@ createApp({
        - puliasco il campo del input     
     */
     IncludsFilter() {
-      this.FilterShow = [];
-
       for (let index = 0; index < this.contacts.length; index++) {
         const element = this.contacts[index].name;
 
@@ -362,5 +360,8 @@ createApp({
         this.contacts[this.index].messages.splice(this.numIndex, 1);
       }
     },
+  },
+  mounted(){
+    console.log(this.FilterShow);
   },
 }).mount("#app");
