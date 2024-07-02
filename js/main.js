@@ -356,6 +356,7 @@ createApp({
     RemoveItem() {
       if (this.contacts[this.index].messages.length == 1) {
         this.contacts.splice(this.index, 1);
+        this.index = this.contacts.length - 1;
       } else {
         this.contacts[this.index].messages.splice(this.numIndex, 1);
       }
