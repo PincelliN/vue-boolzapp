@@ -3,15 +3,17 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      notifiche: false,
-      OnlineValue: "A",
-      index: 0,
-      numIndex: null,
-      showdropdow: false,
-      isActive: false,
-      newmessage: "",
-      FilterSelect: "",
-      FilterShow: [],
+      notifiche: false /* Propità per display notifiche */,
+      OnlineValue:
+        "A" /*  Propità per messaggio Online sta scrivendo e ultimo messaggio */,
+      index: 0 /* Propietà per richiamare l'oggetto dentro contacts  */,
+      numIndex:
+        null /* Propietà per richiamare l'oggetto dentro contacts messages */,
+      showdropdow: false /* Propietà legata al display dropdown */,
+      isActive: false /* Propietà legata al display dropdown */,
+      newmessage: "" /* Propietà legata al input massage */,
+      FilterSelect: "" /* Propietà legata al input filter */,
+      FilterShow: [] /* array con i contatti filtrati */,
       contacts: [
         {
           name: "Ant man",
@@ -246,46 +248,26 @@ createApp({
       this.FilterShow = [];
 
       for (let index = 0; index < this.contacts.length; index++) {
-        
         const element = this.contacts[index].name;
-         
+
         const elementName = element.toLowerCase();
-        
-       let includ = elementName.indexOf(this.FilterSelect.toLowerCase());
-      
-       if (includ==-1) {
 
-        this.FilterShow.push(element);
+        let includ = elementName.indexOf(this.FilterSelect.toLowerCase());
 
-       }
+        if (includ == -1) {
+          this.FilterShow.push(element);
+        }
       }
-        this.FilterSelect = ""; 
-     
+      this.FilterSelect = "";
     },
-    AddAnswer(){
-          let newans = {
-            date: this.NewTime(),
-            message:
-              this.contacts[this.index].cit[Math.floor(Math.random() * 4)],
-            status: "received",
-          };
-             this.contacts[this.index].messages.push(newans);
-            
-             
-              this.OnlineValue='C';
-              setTimeout(this.ChangeValue,2000);
-        },
 
-        ChangeValue(){
-          this.OnlineValue='A'
-        },
-        /* - creo un oggetto con le stesse propietà dell array messages
+    /* - creo un oggetto con le stesse propietà dell array messages
            - assegno il valore alla propietà date con una funzione
            - assegno la variabile newmessage alla propietà message
            - se newmessage è diverso da nullo allora lo inserisco nel array messages
            - una volta che inserisco newmessage nel array allora faccio partire un timer che automatizza la risposta 
         */
-    AddMessage() { 
+    AddMessage() {
       let DateTime = luxon.DateTime;
 
       const NewDateTime =
@@ -300,105 +282,85 @@ createApp({
         DateTime.now().c.minute +
         ":" +
         DateTime.now().c.second;
-      
 
       let newmes = {
         date: NewDateTime,
         message: this.newmessage,
         status: "send",
       };
-      
-      if (this.newmessage != "" ) {
-         this.OnlineValue = 'B';
+
+      if (this.newmessage != "") {
+        this.OnlineValue = "B";
         this.contacts[this.index].messages.push(newmes);
-        setTimeout(this.AddAnswer,2000)
+        setTimeout(this.AddAnswer, 2000);
         this.newmessage = "";
-      }   
+      }
+    },
+    AddAnswer() {
+      let newans = {
+        date: this.NewTime(),
+        message: this.contacts[this.index].cit[Math.floor(Math.random() * 4)],
+        status: "received",
+      };
+      this.contacts[this.index].messages.push(newans);
+
+      this.OnlineValue = "C";
+      setTimeout(this.ChangeValue, 2000);
+    },
+
+    ChangeValue() {
+      this.OnlineValue = "A";
     },
 
     /* funzione per ottenere l'ora e i minuti dalla propietà data  */
-    LastMessageHoure(i){
-     let Hour= this.contacts[i].messages[
-        this.contacts[i].messages.length - 1
-      ].date;
-      
-      let LastHour=Hour.split(' '); 
+    LastMessageHoure(i) {
+      let Hour =
+        this.contacts[i].messages[this.contacts[i].messages.length - 1].date;
+
+      let LastHour = Hour.split(" ");
 
       let HourMinute = LastHour[1].split(":");
-      
-      let newHourMinure = HourMinute[0] +':'+ HourMinute[1];
-      
+
+      let newHourMinure = HourMinute[0] + ":" + HourMinute[1];
+
       return newHourMinure;
     },
 
     /* per ognio nuovo messaggio genero una nuova data incrementata */
-    NewTime(){
-
-
+    NewTime() {
       const Time =
-        this.contacts[this.index].messages[this.contacts[this.index].messages.length - 1 ].date;
-        
-        console.log(Time);
-        const TimeSplit = Time.split(' ');
-        console.log(TimeSplit);
-        const NewTimeSplit = TimeSplit[2].split(':');
-        console.log(NewTimeSplit);
-        if (NewTimeSplit[1] == 59) {
-          NewTimeSplit[1] = 0;
-          NewTimeSplit[0] = parseInt(NewTimeSplit[0]) + 1;
-        }
-        const IncrisNewTimeSplit =parseInt(NewTimeSplit[1]) + 1;
-        const LastTime =
-          TimeSplit[0] +
-          " " +
-          NewTimeSplit[0] +
-          ":" +
-          IncrisNewTimeSplit +
-          ":" +
-          NewTimeSplit[2];
-         
-          return LastTime
-    },
-   /* funzione per rimuovere  un messaggio in pagina */
-    RemoveItem() {
+        this.contacts[this.index].messages[
+          this.contacts[this.index].messages.length - 1
+        ].date;
 
-
-      if (this.contacts[this.index].messages.length == 1) {
-      this.contacts.splice(this.index,1);
-      }else{
-      this.contacts[this.index].messages.splice(
-        this.numIndex,
-        1
-      );
+      console.log(Time);
+      const TimeSplit = Time.split(" ");
+      console.log(TimeSplit);
+      const NewTimeSplit = TimeSplit[2].split(":");
+      console.log(NewTimeSplit);
+      if (NewTimeSplit[1] == 59) {
+        NewTimeSplit[1] = 0;
+        NewTimeSplit[0] = parseInt(NewTimeSplit[0]) + 1;
       }
-        
+      const IncrisNewTimeSplit = parseInt(NewTimeSplit[1]) + 1;
+      const LastTime =
+        TimeSplit[0] +
+        " " +
+        NewTimeSplit[0] +
+        ":" +
+        IncrisNewTimeSplit +
+        ":" +
+        NewTimeSplit[2];
+
+      return LastTime;
+    },
+    /* funzione per rimuovere  un messaggio in pagina */
+    RemoveItem() {
+      if (this.contacts[this.index].messages.length == 1) {
+        this.contacts.splice(this.index, 1);
+      } else {
+        this.contacts[this.index].messages.splice(this.numIndex, 1);
+      }
     },
   },
-  mounted(){
-    let DateTime = luxon.DateTime;
-
-    const NewDateTime =
-      DateTime.now().c.day +
-      "/" +
-      DateTime.now().c.month +
-      "/" +
-      DateTime.now().c.year +
-      "  " +
-      DateTime.now().c.hour +
-      ":" +
-      DateTime.now().c.minute +
-      ":" +
-      DateTime.now().c.second;
-     
-    console.log(NewDateTime);
-    console.log(DateTime.now().c.hour);
-    console.log(DateTime.now().c.minute);
-    console.log(DateTime.now().c.day);
-    console.log(DateTime.now().c.second);
-    console.log(DateTime.now().c.month);
-    console.log(DateTime.now().c.year);
-    
-    console.log(DateTime.now().c);
-    console.log(this.OnlineValue);
-  }
 }).mount("#app");
