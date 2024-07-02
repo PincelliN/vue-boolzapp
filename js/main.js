@@ -286,8 +286,9 @@ createApp({
         message: this.newmessage,
         status: "send",
       };
-
-      if (this.newmessage != "") {
+        /* trim serve per impedire alla stringa di essere composta solo da spazi vuoti
+         */
+      if (this.newmessage.trim().length !== 0) {
         this.OnlineValue = "B";
         this.contacts[this.index].messages.push(newmes);
         setTimeout(this.AddAnswer, 2000);

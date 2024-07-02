@@ -115,13 +115,13 @@
                   </div>
                   <div class="contact-group-user-text">
                     <strong>{{contact.name}}</strong>
-                    <p class="contact-group-text">
+                    <p v-if="index != i" class="contact-group-text">
                       <!-- il testo corrisponde al ultimo messaggio di ogni contatto  -->
                       {{contact.messages[contact.messages.length-1].message}}
                     </p>
                   </div>
                   <!-- l'ora corrisponde al ora del ultimo messaggio inviato -->
-                  <small>{{LastMessageHoure(i)}}</small>
+                  <small v-if="index != i">{{LastMessageHoure(i)}}</small>
                 </div>
               </div>
             </section>
@@ -151,7 +151,7 @@
                 <p v-else-if="OnlineValue == 'C'">...Online...</p>
                 <small v-if="OnlineValue != 'B'"
                   >ultimo
-                  messaggio{{contacts[index].messages[contacts[index].messages.length-1].date}}</small
+                  messaggio {{contacts[index].messages[contacts[index].messages.length-1].date}}</small
                 >
               </div>
               <div>
