@@ -271,7 +271,7 @@ createApp({
           };
              this.contacts[this.index].messages.push(newans);
             
-             this.newmessage = "";
+             
               this.OnlineValue='C';
               setTimeout(this.ChangeValue,2000);
         },
@@ -312,6 +312,7 @@ createApp({
          this.OnlineValue = 'B';
         this.contacts[this.index].messages.push(newmes);
         setTimeout(this.AddAnswer,2000)
+        this.newmessage = "";
       }   
     },
 
