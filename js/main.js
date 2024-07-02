@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
       notifiche: false,
+      OnlineValue: "A",
       index: 0,
       numIndex: null,
       showdropdow: false,
@@ -268,10 +269,15 @@ createApp({
               this.contacts[this.index].cit[Math.floor(Math.random() * 4)],
             status: "received",
           };
-           
              this.contacts[this.index].messages.push(newans);
-           
-          this.newmessage = "";
+            
+             this.newmessage = "";
+              this.OnlineValue='C';
+              setTimeout(this.ChangeValue,2000);
+        },
+
+        ChangeValue(){
+          this.OnlineValue='A'
         },
         /* - creo un oggetto con le stesse propietà dell array messages
            - assegno il valore alla propietà date con una funzione
@@ -303,8 +309,9 @@ createApp({
       };
       
       if (this.newmessage != "" ) {
+         this.OnlineValue = 'B';
         this.contacts[this.index].messages.push(newmes);
-        setTimeout(this.AddAnswer,1000)
+        setTimeout(this.AddAnswer,2000)
       }   
     },
 
@@ -391,5 +398,6 @@ createApp({
     console.log(DateTime.now().c.year);
     
     console.log(DateTime.now().c);
+    console.log(this.OnlineValue);
   }
 }).mount("#app");

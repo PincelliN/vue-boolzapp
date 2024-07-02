@@ -114,7 +114,7 @@
                   </div>
                   <div class="contact-group-user-text">
                     <strong>{{contact.name}}</strong>
-                    <p class="contact-group-text">
+                    <p class="contact-group-text" >
                       <!-- il testo corrisponde al ultimo messaggio di ogni contatto  -->
                       {{contact.messages[contact.messages.length-1].message}}
                     </p>
@@ -141,13 +141,15 @@
               </div>
               <div class="chat-header-text">
                 <strong>{{contacts[index].name}}</strong>
-                <p >
+                <p v-if="OnlineValue == 'A'">
                   <!-- il testo corrisponde all' ultimo messaggio di ogni contatto  -->
                   {{contacts[index].messages[contacts[index].messages.length-1].message}}
                   <!-- l'ora corrisponde all' ora del ultimo messaggio inviato --> 
                 </p>
-                <small      
-                    >{{contacts[index].messages[contacts[index].messages.length-1].date}}</small
+                <p v-else-if="OnlineValue == 'B'">...Sta Scrivendo...</p>
+                <p v-else-if="OnlineValue == 'C'">...Online...</p>
+                <small v-if="OnlineValue != 'B'"     
+                    >ultimo messaggio{{contacts[index].messages[contacts[index].messages.length-1].date}}</small
                   >
               </div>
               <div>
