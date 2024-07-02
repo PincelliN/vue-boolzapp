@@ -115,13 +115,13 @@
                   </div>
                   <div class="contact-group-user-text">
                     <strong>{{contact.name}}</strong>
-                    <p v-if="index != i" class="contact-group-text">
+                    <p v-if=" index != i" class="contact-group-text">
                       <!-- il testo corrisponde al ultimo messaggio di ogni contatto  -->
                       {{contact.messages[contact.messages.length-1].message}}
                     </p>
                   </div>
                   <!-- l'ora corrisponde al ora del ultimo messaggio inviato -->
-                  <small v-if="index != i">{{LastMessageHoure(i)}}</small>
+                  <small v-if=" index != i">{{LastMessageHoure(i)}}</small>
                 </div>
               </div>
             </section>
@@ -147,11 +147,11 @@
                   {{contacts[index].messages[contacts[index].messages.length-1].message}}
                   <!-- l'ora corrisponde all' ora del ultimo messaggio inviato -->
                 </p>
-                <p v-else-if="OnlineValue == 'B'">...Sta Scrivendo...</p>
-                <p v-else-if="OnlineValue == 'C'">...Online...</p>
+                <p v-else-if="OnlineValue == 'B'">&hellip;Sta Scrivendo &hellip;</p>
+                <p v-else-if="OnlineValue == 'C'">&hellip; Online &hellip;</p>
                 <small v-if="OnlineValue != 'B'"
-                  >ultimo
-                  messaggio {{contacts[index].messages[contacts[index].messages.length-1].date}}</small
+                  >ultimo  
+                   messaggio  {{contacts[index].messages[contacts[index].messages.length-1].date}}</small
                 >
               </div>
               <div>
@@ -165,7 +165,7 @@
           </section>
           <!-- Messaggi Chat -->
           <!-- cambio lo sfondo della chat in base al volore del index -->
-          <div
+          <div id="here"
             class="contact-scroll chat-table"
             :style="{ backgroundImage: 'url('+ contacts[index].wall +')' }"
           >
@@ -176,7 +176,8 @@
               :class="messag.status === 'received' ? 'left':'right'"
             >
               <!-- al click creo una variabile di valore pari al index del messaggio  -->
-              <div @click="numIndex = num">{{messag.message}}</div>
+              <div @click="numIndex = num">{{messag.message}}
+              </div>
               <!-- classe del droopdown -->
               <div
                 class="dropdown"

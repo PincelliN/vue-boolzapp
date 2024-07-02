@@ -286,25 +286,25 @@ createApp({
         message: this.newmessage,
         status: "send",
       };
-        /* trim serve per impedire alla stringa di essere composta solo da spazi vuoti
-         */
+      /* trim serve per impedire alla stringa di essere composta solo da spazi vuoti
+       */
       if (this.newmessage.trim().length !== 0) {
         this.OnlineValue = "B";
         this.contacts[this.index].messages.push(newmes);
-        setTimeout(this.AddAnswer, 2000);
+        setTimeout(this.AddAnswer, 1000);
         this.newmessage = "";
       }
     },
-    AddAnswer() {
+     AddAnswer() {
       let newans = {
         date: this.NewTime(),
         message: this.contacts[this.index].cit[Math.floor(Math.random() * 4)],
         status: "received",
       };
-      this.contacts[this.index].messages.push(newans);
 
+      this.contacts[this.index].messages.push(newans);
       this.OnlineValue = "C";
-      setTimeout(this.ChangeValue, 2000);
+      setTimeout(this.ChangeValue, 1000);
     },
 
     ChangeValue() {
@@ -315,13 +315,13 @@ createApp({
     LastMessageHoure(i) {
       let Hour =
         this.contacts[i].messages[this.contacts[i].messages.length - 1].date;
-
+console.log(Hour);
       let LastHour = Hour.split(" ");
-
+console.log(LastHour);
       let HourMinute = LastHour[1].split(":");
-
+console.log(HourMinute);
       let newHourMinure = HourMinute[0] + ":" + HourMinute[1];
-
+console.log(newHourMinure);
       return newHourMinure;
     },
 
@@ -332,7 +332,7 @@ createApp({
           this.contacts[this.index].messages.length - 1
         ].date;
 
-      console.log(Time);
+      console.log("a"+Time);
       const TimeSplit = Time.split(" ");
       console.log(TimeSplit);
       const NewTimeSplit = TimeSplit[2].split(":");
@@ -363,7 +363,5 @@ createApp({
       }
     },
   },
-  mounted(){
-    console.log(this.FilterShow);
-  },
+  
 }).mount("#app");
