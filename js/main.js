@@ -256,7 +256,7 @@ createApp({
           this.FilterShow.push(element);
         }
       }
-      this.FilterSelect = "";
+      
     },
 
     /* - creo un oggetto con le stesse propietà dell array messages

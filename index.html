@@ -129,7 +129,8 @@
         </div>
 
         <!-- Sezione Chat -->
-        <div id="chat">
+        <div id="chat"
+         >
           <!-- Sezione Chat Corrente Info -->
           <section>
             <div class="chat-header">
@@ -168,6 +169,7 @@
           <div id="here"
             class="contact-scroll chat-table"
             :style="{ backgroundImage: 'url('+ contacts[index].wall +')' }"
+         
           >
             <!-- stampo tutti i messaggi relativi al contatto -->
             <!-- se il messaggio è del utente oppure del contatto gli assegno classi diverse -->
@@ -176,7 +178,7 @@
               :class="messag.status === 'received' ? 'left':'right'"
             >
               <!-- al click creo una variabile di valore pari al index del messaggio  -->
-              <div @click="numIndex = num">{{messag.message}}
+              <div @mouseover="numIndex = num">{{messag.message}}
               </div>
               <!-- classe del droopdown -->
               <div
