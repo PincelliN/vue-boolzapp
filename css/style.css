@@ -60,7 +60,8 @@ button{
 .contact-header {
   display: flex;
   align-items: center;
-  background-color: rgb(172, 172, 172);
+  background-color: rgb(102, 102, 102);
+  color: white;
 }
 .logo-header {
   display: flex;
@@ -111,9 +112,12 @@ button{
 }
 .contact-group:hover {
   background-color: rgb(187, 187, 187);
+  box-shadow: 10px 10px 5px rgb(54, 54, 54);
+
 }
 .active {
   background-color: rgb(0, 0, 0);
+  box-shadow: 10px 10px 5px rgb(54, 54, 54);
   color: white;
   display: flex;
   align-items: center;
@@ -154,8 +158,10 @@ button{
   height: 100px;
   margin: 10px;
   padding: 5px;
-
   border-radius: 25px;
+  background-color: rgb(102, 102, 102);
+   box-shadow: 10px 10px 5px rgb(0, 0, 0);
+  color: white;
 }
 .chat-logo-box {
   width: 20%;
